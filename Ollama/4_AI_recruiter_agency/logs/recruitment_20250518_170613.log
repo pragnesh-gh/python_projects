@@ -1,0 +1,52 @@
+2025-05-18 17:06:14,049 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-05-18 17:06:18,656 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-18 17:06:18,657 - AI_Recruiter - ERROR - Error processing resume: Error code: 401 - {'error': {'message': 'Incorrect API key provided: ollama. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-18 17:06:18,658 - AI_Recruiter - ERROR - Processing error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: ollama. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\app.py", line 128, in main
+    result = asyncio.run(process_resume(file_path))
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\app.py", line 58, in process_resume
+    return await orchestrator.process_application(resume_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\orchestrator.py", line 68, in process_application
+    extracted_data = await self.extractor.run([
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"role": "user", "content": str(resume_data)}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ])
+    ^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\extractor_agent.py", line 42, in run
+    extracted_info = self._query_ollama(raw_text)
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\base_agent.py", line 26, in _query_ollama
+    response = self.ollama_client.chat.completions.create(
+        model="gemma3:4b",  # Changed to gemma3:4b
+    ...<5 lines>...
+        max_tokens=2000,
+    )
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\_utils\_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\resources\chat\completions\completions.py", line 925, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<43 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\_base_client.py", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: ollama. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}

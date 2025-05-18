@@ -1,0 +1,21 @@
+2025-05-18 17:17:42,782 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-05-18 17:17:48,754 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/pull "HTTP/1.1 200 OK"
+2025-05-18 17:17:49,237 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/pull "HTTP/1.1 200 OK"
+2025-05-18 17:17:49,736 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/pull "HTTP/1.1 200 OK"
+2025-05-18 17:17:50,251 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/pull "HTTP/1.1 200 OK"
+2025-05-18 17:17:50,751 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/pull "HTTP/1.1 200 OK"
+2025-05-18 17:17:51,261 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/pull "HTTP/1.1 200 OK"
+2025-05-18 17:21:47,367 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-05-18 17:24:32,759 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-05-18 17:25:28,623 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-05-18 17:30:48,255 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-05-18 17:36:42,123 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-05-18 17:36:42,143 - AI_Recruiter - ERROR - Processing error: 'charmap' codec can't encode character '\u25cf' in position 479: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\app.py", line 202, in main
+    f.write(str(result))
+    ~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u25cf' in position 479: character maps to <undefined>

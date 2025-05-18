@@ -1,0 +1,62 @@
+2025-05-18 17:02:41,471 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-05-18 17:03:02,371 - AI_Recruiter - ERROR - Error processing resume: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+2025-05-18 17:03:02,372 - AI_Recruiter - ERROR - Processing error: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+Traceback (most recent call last):
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\app.py", line 128, in main
+    result = asyncio.run(process_resume(file_path))
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\app.py", line 58, in process_resume
+    return await orchestrator.process_application(resume_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\orchestrator.py", line 68, in process_application
+    extracted_data = await self.extractor.run([
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"role": "user", "content": str(resume_data)}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ])
+    ^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\extractor_agent.py", line 42, in run
+    extracted_info = self._query_ollama(raw_text)
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\base_agent.py", line 26, in _query_ollama
+    response = self.ollama_client.ChatCompletion.create(
+        model="gemma3:4b",  # Changed to gemma3:4b
+    ...<5 lines>...
+        max_tokens=2000,
+    )
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\lib\_old_api.py", line 39, in __call__
+    raise APIRemovedInV1(symbol=self._symbol)
+openai.lib._old_api.APIRemovedInV1: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+

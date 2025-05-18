@@ -1,0 +1,49 @@
+2025-05-18 17:08:35,265 - numexpr.utils - INFO - NumExpr defaulting to 16 threads.
+2025-05-18 17:08:39,776 - AI_Recruiter - ERROR - Error processing resume: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+2025-05-18 17:08:39,777 - AI_Recruiter - ERROR - Processing error: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+Traceback (most recent call last):
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\app.py", line 128, in main
+    result = asyncio.run(process_resume(file_path))
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\app.py", line 58, in process_resume
+    return await orchestrator.process_application(resume_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\orchestrator.py", line 68, in process_application
+    extracted_data = await self.extractor.run([
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"role": "user", "content": str(resume_data)}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ])
+    ^^
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\extractor_agent.py", line 42, in run
+    extracted_info = self._query_ollama(raw_text)
+  File "C:\Users\ppk_2\Desktop\Projects\Python\Ollama\4_AI_recruiter_agency\agents\base_agent.py", line 26, in _query_ollama
+    response = self.ollama_client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\_utils\_proxy.py", line 20, in __getattr__
+    proxied = self.__get_proxied__()
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\_utils\_proxy.py", line 58, in __get_proxied__
+    return self.__load__()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\_module_client.py", line 32, in __load__
+    return _load_client().chat
+           ~~~~~~~~~~~~^^
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\__init__.py", line 333, in _load_client
+    _client = _ModuleClient(
+        api_key=api_key,
+    ...<7 lines>...
+        http_client=http_client,
+    )
+  File "C:\Users\ppk_2\miniconda3\envs\ollama\Lib\site-packages\openai\_client.py", line 124, in __init__
+    raise OpenAIError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    )
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
